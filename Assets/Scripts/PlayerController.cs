@@ -22,8 +22,11 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Transform PointerTarget;
 
+    public Animator BlockAnimator;
+
     private float _coffeeAmt = 1;
     private Rigidbody _rb;
+    private float _lastArrow = 0;
 
     void Start()
     {
@@ -32,6 +35,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // ================================================================================================================================
+        // Coffee malus
+        // ================================================================================================================================
+
+        float speedDeg = 1;
+        float slowThreshold = .5f;
+        if (_coffeeAmt < slowThreshold) speedDeg = Mathf.Max(_coffeeAmt * (1 / slowThreshold), .25f);
+
+        // ================================================================================================================================
+        // Rotation
+        // ================================================================================================================================
+
         Vector3 input = new Vector3(
             Input.GetAxisRaw("Horizontal"),
             0,
@@ -48,21 +63,50 @@ public class PlayerController : MonoBehaviour
             );
         }
 
+        // ================================================================================================================================
+        // Translation
+        // ================================================================================================================================
+
         Vector3 motion = input.normalized * WalkSpeed * .01f;
         Vector3 newPos = transform.position += new Vector3(
-            motion.x,
+            motion.x * speedDeg,
             0,
-            motion.z
+            motion.z * speedDeg
         );
 
         _rb.MovePosition(newPos);
 
-        RefillCoffee(-.001f);
+        // ================================================================================================================================
+        // Coffee degrtadation
+        // ================================================================================================================================
 
-        if (Pointer.activeInHierarchy)
+        // TODO: if player is not moving consume less coffee
+        float coffeeMinus = .0004f + input.magnitude * .0003f;
+        RefillCoffee(-coffeeMinus);
+
+        // ================================================================================================================================
+        // Pointer
+        // ================================================================================================================================
+
+        if (Pointer.activeInHierarchy) UpdatePointer();
+
+        // ================================================================================================================================
+        // Block animation
+        // ================================================================================================================================
+
+        float arrow = Mathf.Min(Input.GetAxisRaw("ArrowLeftRight"), 0);
+
+        if (_lastArrow == 0 && arrow == -1)
         {
-            UpdatePointer();
+            BlockAnimator.SetTrigger("Display");
         }
+
+        if (_lastArrow == -1 && arrow == 0)
+        {
+            BlockAnimator.SetTrigger("Hide");
+        }
+
+        _lastArrow = arrow;
     }
 
     public void RefillCoffee(float amt) {
@@ -93,5 +137,11 @@ public class PlayerController : MonoBehaviour
         HeldDossier = dossier;
 
         PointerTarget = CEO;
+    }
+
+    private float Remap(float x, float x1, float x2, float y1, float y2) {
+        float m = (y2 - y1) / (x2 - x1);
+        float c = y1 - m * x1;
+        return m * x + c;
     }
 }

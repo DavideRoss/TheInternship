@@ -13,7 +13,7 @@ public class CoffeeMachineController : MonoBehaviour
     private void Update() {
         if (_active && _player && Input.GetButtonDown("Fire1"))
         {
-            _player.RefillCoffee(.3f);
+            _player.RefillCoffee(.7f);
             _active = false;
             GetComponent<MeshRenderer>().material.color = Color.black;
             StartCoroutine(StopCooldown());
