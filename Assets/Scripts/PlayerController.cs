@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     public float RotationSpeed = 8;
     public float WalkSpeed = 8;
     public GameObject PlayerBody;
 
-    public GameObject CoffeeMachineIcon;
     public GameObject Pointer;
     public Transform PlayerHand;
     public Transform CEO;
 
     private Quaternion _targetRotation;
-    private CharacterController _ctrl;
 
     [HideInInspector]
     public GameObject HeldDossier;
@@ -26,13 +23,11 @@ public class PlayerController : MonoBehaviour
     public Transform PointerTarget;
 
     private float _coffeeAmt = 1;
+    private Rigidbody _rb;
 
     void Start()
     {
-        _ctrl = GetComponent<CharacterController>();
-
-        CoffeeMachineIcon.SetActive(false);
-        //Pointer.SetActive(false);
+        _rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -53,8 +48,14 @@ public class PlayerController : MonoBehaviour
             );
         }
 
-        Vector3 motion = input.normalized * WalkSpeed;
-        _ctrl.Move(motion * Time.deltaTime);
+        Vector3 motion = input.normalized * WalkSpeed * .01f;
+        Vector3 newPos = transform.position += new Vector3(
+            motion.x,
+            0,
+            motion.z
+        );
+
+        _rb.MovePosition(newPos);
 
         RefillCoffee(-.001f);
 
@@ -67,10 +68,6 @@ public class PlayerController : MonoBehaviour
     public void RefillCoffee(float amt) {
         _coffeeAmt = Mathf.Clamp01(_coffeeAmt + amt);
         CoffeeBar.CurrentValue = _coffeeAmt;
-    }
-
-    public void ToggleCoffeeMachineIcon() {
-        CoffeeMachineIcon.SetActive(!CoffeeMachineIcon.activeInHierarchy);
     }
 
     public void TogglePointer() {

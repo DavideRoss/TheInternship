@@ -6,27 +6,36 @@ public class DossierController : MonoBehaviour
 {
     private PlayerController _player;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string Zone = "";
+    public bool IsRequested;
 
-    // Update is called once per frame
+    public IconController Icon;
+
     void Update()
     {
-        if (_player && Input.GetButton("Fire1"))
+        if (IsRequested && _player && Input.GetButton("Fire1"))
         {
             _player.Grab(gameObject);
         }
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (!IsRequested) return;
         _player = other.GetComponent<PlayerController>();
         if (!_player) return;
+
+        Icon.SetIcon("Dossier");
+        Icon.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other) {
+        if (!IsRequested) return;
         _player = null;
+        Icon.SetActive(false);
+    }
+
+    public void SetRequested() {
+        IsRequested = true;
+        GetComponent<MeshRenderer>().material.color = Color.magenta;
     }
 }
