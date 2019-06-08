@@ -55,6 +55,11 @@ public class PlayerController : MonoBehaviour
 
         Vector3 motion = input.normalized * WalkSpeed;
         _ctrl.Move(motion * Time.deltaTime);
+        //_ctrl.transform.position = new Vector3(
+        //    _ctrl.transform.position.x,
+        //    .2f,
+        //    _ctrl.transform.position.z
+        //);
 
         RefillCoffee(-.001f);
 
@@ -62,6 +67,14 @@ public class PlayerController : MonoBehaviour
         {
             UpdatePointer();
         }
+    }
+
+    private void FixedUpdate() {
+        transform.position = new Vector3(
+            transform.position.x,
+            .2f,
+            transform.position.z
+        );
     }
 
     public void RefillCoffee(float amt) {
