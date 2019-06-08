@@ -5,13 +5,12 @@ using UnityEngine;
 public class CoffeeMachineController : MonoBehaviour
 {
     public float Cooldown = 3f;
+    public IconController Icon;
 
     private PlayerController _player;
     private bool _active = true;
 
     private void Update() {
-        if (!_player) return;
-
         if (_active && _player && Input.GetButtonDown("Fire1"))
         {
             _player.RefillCoffee(.3f);
@@ -24,11 +23,12 @@ public class CoffeeMachineController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         _player = other.GetComponent<PlayerController>();
         if (!_player) return;
-        _player.ToggleCoffeeMachineIcon();
+        Icon.SetIcon("CoffeeMachine");
+        Icon.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other) {
-        _player.ToggleCoffeeMachineIcon();
+        Icon.SetActive(false);
         _player = null;
     }
 

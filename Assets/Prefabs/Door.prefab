@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8820081231304551768}
   - component: {fileID: 8820081231304551769}
   - component: {fileID: 8820081231304551770}
-  - component: {fileID: 8820081231304551773}
+  - component: {fileID: 231636880}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8820081231304551767}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.75, y: 1.71, z: 2.33}
   m_LocalScale: {x: 0.2, y: 3, z: 2}
   m_Children: []
@@ -91,8 +91,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.5, y: 1, z: 1.1061192}
+  m_Center: {x: 0, y: 0, z: -0.046940416}
 --- !u!54 &8820081231304551770
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -108,8 +108,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!59 &8820081231304551773
+  m_CollisionDetection: 1
+--- !u!59 &231636880
 HingeJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0.5}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.1920582, z: -0.51733035}
+  m_ConnectedAnchor: {x: 0.0036478043, y: 0.005327543, z: -0.8544493}
   m_UseSpring: 1
   m_Spring:
     spring: 40
@@ -140,7 +140,7 @@ HingeJoint:
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
