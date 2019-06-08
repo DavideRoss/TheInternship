@@ -5,16 +5,7 @@ using UnityEngine;
 public class CEOController : MonoBehaviour
 {
     private PlayerController _player;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    public GameController _game;
 
     private void OnTriggerEnter(Collider other) {
         _player = other.GetComponent<PlayerController>();
@@ -23,7 +14,14 @@ public class CEOController : MonoBehaviour
         {
             // TODO: add point to player
             Destroy(_player.HeldDossier);
-        }
+            _player.HeldDossier = null;
 
+            StartCoroutine(PickRandomDossier());
+        }
+    }
+
+    IEnumerator PickRandomDossier() {
+        yield return new WaitForEndOfFrame();
+        _game.PickRandomDossier();
     }
 }

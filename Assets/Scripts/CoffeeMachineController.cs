@@ -9,7 +9,7 @@ public class CoffeeMachineController : MonoBehaviour
     private PlayerController _player;
     private bool _active = true;
 
-    private void OnTriggerStay(Collider other) {
+    private void Update() {
         if (!_player) return;
 
         if (_active && _player && Input.GetButtonDown("Fire1"))
@@ -29,6 +29,7 @@ public class CoffeeMachineController : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         _player.ToggleCoffeeMachineIcon();
+        _player = null;
     }
 
     private IEnumerator StopCooldown() {

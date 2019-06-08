@@ -770,11 +770,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 500
-  WalkSpeed: 10
+  WalkSpeed: 15
   PlayerBody: {fileID: 992317059}
   CoffeeMachineIcon: {fileID: 1432625562}
   Pointer: {fileID: 1657344142}
   PlayerHand: {fileID: 1877595216}
+  CEO: {fileID: 1692733843}
   HeldDossier: {fileID: 0}
   CoffeeBar: {fileID: 1927933624}
   PointerTarget: {fileID: 0}
@@ -2452,6 +2453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea476830844da449a1e458c5cdb1670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _game: {fileID: 1149175072}
 --- !u!136 &1692733845
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -12,13 +12,17 @@ public class PlayerController : MonoBehaviour
     public GameObject CoffeeMachineIcon;
     public GameObject Pointer;
     public Transform PlayerHand;
+    public Transform CEO;
 
     private Quaternion _targetRotation;
     private CharacterController _ctrl;
+
+    [HideInInspector]
     public GameObject HeldDossier;
 
     public FillBar CoffeeBar;
 
+    [HideInInspector]
     public Transform PointerTarget;
 
     private float _coffeeAmt = 1;
@@ -67,7 +71,6 @@ public class PlayerController : MonoBehaviour
 
     public void ToggleCoffeeMachineIcon() {
         CoffeeMachineIcon.SetActive(!CoffeeMachineIcon.activeInHierarchy);
-        //CoffeeMachineIcon.SetActive(true);
     }
 
     public void TogglePointer() {
@@ -75,6 +78,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void UpdatePointer() {
+        if (!PointerTarget) return;
+
         Vector3 pos = new Vector3(
             PointerTarget.position.x,
             Pointer.transform.position.y,
@@ -86,6 +91,10 @@ public class PlayerController : MonoBehaviour
 
     public void Grab(GameObject dossier) {
         dossier.transform.parent = PlayerHand;
+        dossier.transform.localPosition = Vector3.zero;
+        dossier.transform.localRotation = Quaternion.identity;
         HeldDossier = dossier;
+
+        PointerTarget = CEO;
     }
 }

@@ -11,18 +11,17 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        PickRandomDossier();
+    }
+
+    public void PickRandomDossier() {
         _dossiers = GameObject.FindGameObjectsWithTag("Dossier");
+        Debug.Log(_dossiers.Length);
         _currentDossier = _dossiers[Random.Range(0, _dossiers.Length - 1)];
         _currentDossier.GetComponent<MeshRenderer>().material.color = Color.magenta;
 
         Debug.Log(_currentDossier);
 
         Player.PointerTarget = _currentDossier.transform;
-        //Player.TogglePointer();
-    }
-
-    void Update()
-    {
-        
     }
 }
