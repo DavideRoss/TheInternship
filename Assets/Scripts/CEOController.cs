@@ -18,6 +18,9 @@ public class CEOController : MonoBehaviour
             _dossierList.DeleteDossier(ctrl);
             Destroy(_player.HeldDossier);
             _player.HeldDossier = null;
+            _player.PlayerAnimator.SetBool("IsHoldingObject", false);
+            _player.Requests--;
+            _player.Completed++;
         }
     }
 }

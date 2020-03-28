@@ -15,7 +15,7 @@ public class CoffeeMachineController : MonoBehaviour
         {
             _player.RefillCoffee(.7f);
             _active = false;
-            GetComponent<MeshRenderer>().material.color = Color.black;
+            //GetComponent<MeshRenderer>().material.color = Color.black;
             StartCoroutine(StopCooldown());
         }
     }
@@ -34,7 +34,7 @@ public class CoffeeMachineController : MonoBehaviour
 
     private IEnumerator StopCooldown() {
         yield return new WaitForSeconds(Cooldown);
-        GetComponent<MeshRenderer>().material.color = Color.red;
+        //GetComponent<MeshRenderer>().material.color = Color.red;
         _active = true;
     }
 }

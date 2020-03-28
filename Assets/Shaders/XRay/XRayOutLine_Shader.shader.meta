@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 5dc3b3372fab23548834d2cff7006640
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _Geo_1_textureslambert1_Normal: {fileID: 2800000, guid: b742546f327068a4b907cee9b8cbeb7e,
+      type: 3}
+  - _Geo_1_textureslambert1_Base_Color: {fileID: 2800000, guid: d6a3d3b74288a284885cdb4f1dcd46f0,
+      type: 3}
+  - _Geo_1_textureslambert1_MG: {fileID: 2800000, guid: 695199da2e7c6e44299a4aae033fda49,
+      type: 3}
+  - _Geo_1_textureslambert1_AO: {fileID: 2800000, guid: 43accd1ee07abe842b1defb7d0072a6d,
+      type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

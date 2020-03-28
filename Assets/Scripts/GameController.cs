@@ -34,19 +34,26 @@ public class GameController : MonoBehaviour
 
     public void PickRandomDossier() {
         // TODO: reactivate lose conditions
-        //if (DossierList.DossierList.Count == 5)
-        //{
-        //    SceneManager.LoadScene("GameOverScene");
-        //    return;
-        //}
+        if (DossierList.Count() > 5)
+        {
+            SceneManager.LoadScene("GameOverScene");
+            return;
+        }
 
         _dossiers = GameObject.FindGameObjectsWithTag("Dossier").Where(d => !d.GetComponent<DossierController>().IsRequested).ToArray();
+
+        if (_dossiers.Length == 0)
+        {
+            Debug.LogError("Dossiers finished");
+            return;
+        }
+
         _currentDossier = _dossiers[Random.Range(0, _dossiers.Length - 1)];
         DossierController currCtrl = _currentDossier.GetComponent<DossierController>();
         currCtrl.SetRequested();
         DossierList.AddDossier(currCtrl);
 
-        Player.PointerTarget = _currentDossier.transform;
+        Player.Requests++;
 
         _currentDossierTime = 0;
         _nextDossierDuration *= _nextDossierTimeMult;

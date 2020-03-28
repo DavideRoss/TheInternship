@@ -13,8 +13,9 @@ public class DossierController : MonoBehaviour
 
     void Update()
     {
-        if (IsRequested && _player && Input.GetButton("Fire1"))
+        if (IsRequested && _player && !_player.HeldDossier && Input.GetButton("Fire1"))
         {
+            GetComponent<Collider>().enabled = false;
             _player.Grab(gameObject);
         }
     }
@@ -22,7 +23,7 @@ public class DossierController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (!IsRequested) return;
         _player = other.GetComponent<PlayerController>();
-        if (!_player) return;
+        if (!_player || _player.HeldDossier) return;
 
         Icon.SetIcon("Dossier");
         Icon.SetActive(true);

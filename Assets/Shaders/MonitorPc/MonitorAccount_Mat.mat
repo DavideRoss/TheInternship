@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MonitorAccount_Mat
+  m_Shader: {fileID: 4800000, guid: 4bdb50796ee8fc7449c88eee71ddbff5, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Map:
+        m_Texture: {fileID: 2800000, guid: b70aef40ea71ca5478f04f0c4c53b68f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample1:
+        m_Texture: {fileID: 2800000, guid: 05aa43dbbeddb24419e5b5b6e734d595, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Float0: 150
+    - __dirty: 0
+    m_Colors:
+    - _Offset: {r: 0, g: 0.1, b: 0, a: 0}
+    - _Remap: {r: 0, g: 1, b: 0, a: 1}
+    - _Tiling: {r: 0.001, g: 0.2, b: 0, a: 0}

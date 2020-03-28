@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 022f43979fb3c28459dd302bbeb63f5b
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _AccessoriAccessori_MAT_Normal: {fileID: 2800000, guid: dbd3d7dc4565845469660ca9b4835511,
+      type: 3}
+  - _AccessoriAccessori_MAT_Base_Color: {fileID: 2800000, guid: 2bbdbe3461573f4429676862f49b0234,
+      type: 3}
+  - _AccessoriAccessori_MAT_MG: {fileID: 2800000, guid: 9fcd2d8791d3e574b8720a08dde94f86,
+      type: 3}
+  - _AccessoriAccessori_MAT_AO: {fileID: 2800000, guid: 9e3a65248a4606740bb9eda3df8514ef,
+      type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
